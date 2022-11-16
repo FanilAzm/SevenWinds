@@ -1,0 +1,25 @@
+.header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 44px;
+    padding: 0 24px;
+    background-color: #27272A;
+}
+
+.icon {
+    margin-right: 27px;
+    cursor: pointer;
+}
+
+.menuItem a {
+    margin-right: 28px;
+    font-size: 14px;
+    line-height: 16px;
+    color: #A1A1AA;
+    text-decoration: none;
+}
+
+.menuItem a.active {
+    color: #fff;
+}

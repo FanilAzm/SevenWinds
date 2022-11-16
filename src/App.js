@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from "react";
+import { Routes, Route } from "react-router-dom";
 
-function App() {
+import './App.css';
+import Header from './components/Header';
+import Main from './pages/Main';
+import Control from './pages/Control';
+
+export default function App() {
+  const [responseID, setResponseID] = useState(null);
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+ 
+  useEffect(() => {
+   fetch(`http://185.244.172.108:8081/v1/outlay-rows/entity/create`, {method: 'POST'})
+    .then((response) => response.json())
+    .then(json => setResponseID(json.id));
+  }, []);
+
+  console.log(responseID);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/control" element={<Control />} />
+      </Routes>
     </div>
   );
-}
-
-export default App;
+};
