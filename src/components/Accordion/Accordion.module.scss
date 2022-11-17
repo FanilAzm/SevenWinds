@@ -1,0 +1,52 @@
+.accordion {
+    transition: all 0.3s ease-in-out;
+}
+
+.itemContent {
+    max-height: 1000px;
+    overflow: hidden;
+    transition: all 1s ease-in-out;
+
+    &[aria-expanded="true"] {
+        padding-bottom: 0;
+        max-height: 0;
+        transition: all 0.5s cubic-bezier(0, 1, 0, 1);
+    }
+}
+
+.contentText {
+    display: flex;
+    align-items: center;
+    padding: 8px 20px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 20px;
+    padding-right: 7px;
+    border-bottom: 1px solid #414144;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.itemName {
+    font-size: 14px;
+}
+
+.itemAbb {
+    font-size: 10px;
+}
+
+.icon {
+    transform: rotate(0deg);
+    transition: all 0.3s ease-in-out;
+}
+
+.iconActive {
+    transform: rotate(-90deg);
+    transition: all 0.3s ease-in-out;
+}

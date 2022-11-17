@@ -1,9 +1,11 @@
 .navbar {
-    display: flex;
-    align-items: stretch;
-    width: 234px;
-    height: calc(100% - 44px);
+    grid-area: n;
+    position: fixed;
+    top: 45px;
+    left: 0;
+    bottom: 0;
+    max-width: 234px;
+    width: 100%;
     background-color: #27272A;
-    border-top: 1px solid #414144;
     border-right: 1px solid #414144;
 }

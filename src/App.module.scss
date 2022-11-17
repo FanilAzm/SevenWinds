@@ -1,0 +1,17 @@
+.app {
+    display: grid;
+    margin: 0 auto;
+    grid-template-areas:
+        "h h h"
+        "n f f";
+    grid-template-rows: 44px 1fr;
+    grid-template-columns: 234px 8fr;
+}
+
+.appContent {
+    display: grid;
+    grid-area: f;
+    grid-template-columns: 1fr;
+    justify-content: start;
+    width: 100%;
+}
