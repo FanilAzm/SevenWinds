@@ -1,5 +1,6 @@
 import React from "react";
 import styles from './Main.module.scss';
+import Table from "../../components/Table";
 
 export default function Main() {
     return (
@@ -7,7 +8,7 @@ export default function Main() {
          <div className={styles.mainTop}>
            <div className={styles.mainName}>Строительно-монтажные работы</div>
          </div>
-         {/*<div className={styles.mainContent}></div>*/}
+         <Table />
        </div>
     )
 }

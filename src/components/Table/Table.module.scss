@@ -1,0 +1,55 @@
+.table {
+    margin: 11px 10px;
+}
+
+.tableHead {
+    padding: 12px;
+    padding-top: 0;
+    letter-spacing: 0.1px;
+    font-size: 14px;
+    color: #A1A1AA;
+
+    &:first-child {
+        width: 110px;
+    }
+}
+
+.tableItem {
+    height: 60px;
+    border-top: 1px solid #414144;
+    letter-spacing: 0.1px;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.levelIcons {
+    display: flex;
+    align-items: center;
+    width: 107px;
+    height: 28px;
+    margin-left: 12px;
+    padding: 3px;
+    border-radius: 6px;
+    background-color: transparent;
+
+    &:hover {
+        background-color: #414144;
+
+        .hideIcon {
+            display: block;
+        }
+    }
+
+    img {
+        cursor: pointer;
+        margin-right: 3px;
+
+        &:last-child {
+            margin-left: 7px;
+        }
+    }
+}
+
+.hideIcon {
+    display: none;
+}

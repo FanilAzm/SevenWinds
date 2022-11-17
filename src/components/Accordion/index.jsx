@@ -17,12 +17,12 @@ export default function Accordion({ name, abb, options }) {
           <div className={styles.itemName}>{name}</div>
           <div className={styles.itemAbb}>{abb}</div>
         </div>
-        <img className={isActive ? styles.icon : styles.iconActive} src={arrowIcon} alt="Menu" />
+        <img className={isActive ? styles.icon : styles.iconActive} src={arrowIcon} />
       </div>
       <div className={styles.itemContent} aria-expanded={!isActive}>
         {options?.map((project, index) => (
           <div key={index} className={styles.contentText}>
-            <img className={styles.icon} src={sidebarIcon} alt="Menu" />
+            <img className={styles.icon} src={sidebarIcon} />
             {project.optionName}
           </div>
         ))}

@@ -30,21 +30,7 @@ export default function App() {
       name: 'Название проекта',
       abb: 'Аббревиатура',
       options: [
-        {optionName: 'По проекту'},
-        {optionName: 'Объекты'},
-        {optionName: 'РД'},
-        {optionName: 'МТО'},
-        {optionName: 'СМР'},
-        {optionName: 'График'},
-        {optionName: 'МиМ'},
-        {optionName: 'Рабочие'},
-        {optionName: 'Капвложения'},
-        {optionName: 'Бюджет'},
-        {optionName: 'Финансирование'},
-        {optionName: 'Панорамы'},
-        {optionName: 'Камеры'},
-        {optionName: 'Поручения'},
-        {optionName: 'Контрагенты'}
+        {optionName: 'СМР'}
       ]
     }
   ];
