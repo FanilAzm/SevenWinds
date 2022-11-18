@@ -16,10 +16,15 @@
 
 .tableItem {
     height: 60px;
+    padding: 0 12px;
     border-top: 1px solid #414144;
     letter-spacing: 0.1px;
     font-size: 14px;
     color: #ffffff;
+
+    &:nth-child(2) {
+        width: 45%;
+    }
 }
 
 .levelIcons {
@@ -27,7 +32,6 @@
     align-items: center;
     width: 107px;
     height: 28px;
-    margin-left: 12px;
     padding: 3px;
     border-radius: 6px;
     background-color: transparent;

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect} from "react";
 import { Routes, Route } from "react-router-dom";
 
 import styles from './App.module.scss';
@@ -12,18 +12,16 @@ export default function App() {
   const ENTITY = JSON.parse(localStorage.getItem("eID"));
 
   useEffect(() => {
-     fetch(`${BASE_URL}/create`, {method: 'POST'})
+    fetch(`${BASE_URL}/create`, {method: 'POST'})
       .then((response) => response.json())
       .then(data => localStorage.setItem('eID', JSON.stringify(data)));
   }, []);
 
-  const fetchDataList = () => {
-    fetch(`${BASE_URL}/${ENTITY.id}/row/list`)
-      .then((response) => response.json())
-      .then(data =>  localStorage.setItem('list', JSON.stringify(data)))
-  }
-
-  fetchDataList()
+  // const getTreeRows = () => {
+  //   fetch(`${BASE_URL}/${ENTITY.id}/row/list`)
+  //     .then((response) => response.json())
+  //     .then(data =>  localStorage.setItem('list', JSON.stringify(data)))
+  // }
 
   const projects = [
     {
