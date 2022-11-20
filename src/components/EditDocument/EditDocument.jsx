@@ -31,7 +31,7 @@ const EditDocument = ({fieldValue, id}) =>  {
       {
         editMode
           ? <input onChange={onStatusChange} autoFocus={true} onBlur={deactivateEditMode} value={status} />
-          : <span onDoubleClick={activateEditMode}>{fieldValue && ""}</span>
+          : <span onDoubleClick={activateEditMode}>{fieldValue || ""}</span>
       }
     </div>
   )

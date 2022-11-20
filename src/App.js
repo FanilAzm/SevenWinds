@@ -2,10 +2,10 @@ import React, {useEffect} from "react";
 import { Routes, Route } from "react-router-dom";
 
 import styles from './App.module.scss';
-import Header from './components/Header';
-import Main from './pages/Main';
-import Control from './pages/Control';
-import Navbar from "./components/Navbar";
+import Header from './components/Header/Header';
+import Main from './pages/Main/Main';
+import Control from './pages/Control/Control';
+import Navbar from "./components/Navbar/Navbar";
 
 export default function App() {
   const BASE_URL = 'http://185.244.172.108:8081/v1/outlay-rows/entity';

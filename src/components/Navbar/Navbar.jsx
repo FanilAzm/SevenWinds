@@ -1,6 +1,6 @@
 import React from "react";
 import styles from './Navbar.module.scss';
-import Accordion from "../Accordion";
+import Accordion from "../Accordion/Accordion";
 
 export default function Navbar({projects}) {
     return (

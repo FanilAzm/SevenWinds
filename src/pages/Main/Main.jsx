@@ -1,6 +1,6 @@
 import React from "react";
 import styles from './Main.module.scss';
-import Table from "../../components/Table";
+import Table from "../../components/Table/Table";
 
 export default function Main() {
     return (
