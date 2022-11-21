@@ -15,7 +15,7 @@ const documentsSlice = createSlice({
         materials: 0,
         mimExploitation: 0,
         overheads: 0,
-        rowName: "Название документа",
+        rowName: "",
         salary: 0,
         supportCosts: 0,
         total: 0
@@ -35,7 +35,7 @@ const documentsSlice = createSlice({
         materials: 0,
         mimExploitation: 0,
         overheads: 0,
-        rowName: "Название документа",
+        rowName: "",
         salary: 0,
         supportCosts: 0,
         total: 0
@@ -55,7 +55,7 @@ const documentsSlice = createSlice({
             materials: 0,
             mimExploitation: 0,
             overheads: 0,
-            rowName: "Название документа",
+            rowName: "",
             salary: 0,
             supportCosts: 0,
             total: 0
@@ -65,15 +65,26 @@ const documentsSlice = createSlice({
       })
     },
     deleteDocument(state, action) {
-      state.documents = state.documents.filter(doc => doc.id !== action.payload);
+      state.documents = state.documents.filter(doc => doc.id !== action.payload.id);
     },
     deleteChildDocument(state, action) {
-      state.documents = state.documents.map(doc => doc.child.filter(item => item.id !== action.payload))
+      state.documents = state.documents.map(doc => {
+        doc.child = doc.child.filter(item => item.id !== action.payload.id);
+        return doc;
+      })
     },
     updateDocumentName(state, action) {
       state.documents = state.documents.map((doc) => {
         if(doc.id === action.payload.id) {
-          doc.rowName = action.payload.status
+          doc[action.payload.fieldName] = action.payload.inputValue;
+        }
+        if(doc.child) {
+          doc.child = doc.child.map(item => {
+            if(item.id === action.payload.id) {
+              item[action.payload.fieldName] = action.payload.inputValue;
+            }
+            return item;
+          })
         }
         return doc;
       })

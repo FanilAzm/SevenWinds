@@ -3,35 +3,29 @@ import {useDispatch} from "react-redux";
 import styles from './EditDocument.module.scss';
 import {updateDocumentName} from "../../store/documentsSlice";
 
-const EditDocument = ({fieldValue, id}) =>  {
+const EditDocument = ({fieldValue, editMode, item, fieldName}) =>  {
   const dispatch = useDispatch();
 
-  const [editMode, setEditMode] = useState(false);
-  const [status, setStatus] = useState(fieldValue);
+  const [inputValue, setInputValue] = useState(fieldValue);
 
   useEffect(() => {
-    setStatus(fieldValue)
+    setInputValue(fieldValue)
   }, [fieldValue]);
 
-  const activateEditMode = () => {
-    setEditMode(true);
+  const saveChanges = () => {
+    dispatch(updateDocumentName({inputValue, id: item.id, fieldName}));
   }
 
-  const deactivateEditMode = () => {
-    setEditMode(false);
-    dispatch(updateDocumentName({status, id}));
-  }
-
-  const onStatusChange = (e) => {
-    setStatus(e.currentTarget.value);
+  const onInputValueChange = (e) => {
+    setInputValue(e.currentTarget.value);
   }
 
   return(
     <div className={styles.status}>
       {
         editMode
-          ? <input onChange={onStatusChange} autoFocus={true} onBlur={deactivateEditMode} value={status} />
-          : <span onDoubleClick={activateEditMode}>{fieldValue || ""}</span>
+          ? <input onChange={onInputValueChange} autoFocus={true} onBlur={saveChanges} value={inputValue} />
+          : <span>{fieldValue ?? ""}</span>
       }
     </div>
   )

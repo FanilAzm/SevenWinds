@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {useDispatch} from "react-redux";
 import styles from "./Table.module.scss";
 import firstLevel from "../../assets/images/icons/levelOne.svg";
@@ -11,23 +11,64 @@ import EditDocument from "../EditDocument/EditDocument";
 export const TableRow = React.memo(function TableRow({item, isChild}) {
   const dispatch = useDispatch();
 
-  const onDeleteDocument = (id) => isChild ? dispatch(deleteChildDocument(id)) : dispatch(deleteDocument(id));
+  const onDeleteDocument = (item) => isChild ? dispatch(deleteChildDocument(item)) : dispatch(deleteDocument(item));
+
+  const [editMode, setEditMode] = useState(false);
+
+  const editableMode = (edit) => {
+    setEditMode(edit);
+  }
 
   return (
-    <tr key={item.id}>
+    <tr key={item.id} onDoubleClick={editMode ? () => editableMode(false) : () => editableMode(true)}>
       <td className={styles.tableItem}>
         <span className={ !isChild ? styles.levelIcons : styles.secondLevel}>
           { !isChild ? <img src={firstLevel} onClick={() => dispatch(addDocument(item.id))} /> : null }
           <img className={ !isChild ? styles.hideIcon : ''} src={secondLevel} onClick={() => dispatch(addChildDocument(item.id))} />
           <img className={styles.hideIcon} src={documentIcon} />
-          <img className={styles.hideIcon} src={trashIcon} onClick={() => onDeleteDocument(item.id)} />
+          <img className={styles.hideIcon} src={trashIcon} onClick={() => onDeleteDocument(item)} />
         </span>
       </td>
-      <td className={styles.tableItem}>{item.rowName}</td>
-      <td className={styles.tableItem}>{item.salary}</td>
-      <td className={styles.tableItem}>{item.equipmentCosts}</td>
-      <td className={styles.tableItem}>{item.overheads}</td>
-      <td className={styles.tableItem}>{item.total}</td>
+      <td className={styles.tableItem}>
+        <EditDocument
+          item={item}
+          editMode={editMode}
+          fieldValue={item.rowName}
+          fieldName='rowName'
+        />
+      </td>
+      <td className={styles.tableItem}>
+        <EditDocument
+          item={item}
+          editMode={editMode}
+          fieldValue={item.salary}
+          fieldName='salary'
+        />
+      </td>
+      <td className={styles.tableItem}>
+        <EditDocument
+          item={item}
+          editMode={editMode}
+          fieldValue={item.equipmentCosts}
+          fieldName='equipmentCosts'
+        />
+      </td>
+      <td className={styles.tableItem}>
+        <EditDocument
+          item={item}
+          editMode={editMode}
+          fieldValue={item.overheads}
+          fieldName='overheads'
+        />
+      </td>
+      <td className={styles.tableItem}>
+        <EditDocument
+          item={item}
+          editMode={editMode}
+          fieldValue={item.total}
+          fieldName='total'
+        />
+      </td>
     </tr>
   )
 })
